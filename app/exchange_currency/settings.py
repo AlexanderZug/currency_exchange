@@ -27,8 +27,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+# Celery Configuration Options
+CELERY_RESULT_BACKEND =  "redis://redis:6379" + '/0'
+CELERY_BROKER_URL = "redis://redis:6379" + '/0'
+CELERY_CACHE_BACKEND = 'default'
 
 # Application definition
 
@@ -39,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_celery_beat',
+
     'api.apps.ApiConfig',
 ]
 

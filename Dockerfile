@@ -1,6 +1,5 @@
 FROM python:3.12.1-slim-bullseye
-RUN mkdir /app
-WORKDIR /app
+WORKDIR /app/
 COPY poetry.lock pyproject.toml /app/
 RUN pip install --upgrade pip \
     && pip install poetry \
@@ -9,3 +8,4 @@ RUN pip install --upgrade pip \
 COPY . /app
 RUN chown -R 1000:1000 /app
 EXPOSE 8000
+ENTRYPOINT ./runner/django_do_migrations.sh & ./runner/django_run.sh & ./runner/celery.sh
