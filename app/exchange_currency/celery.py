@@ -14,6 +14,6 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'get_rate': {
         'task': 'api.tasks.get_currency_rate',
-        'schedule': 10.0,
+        'schedule': 7200.0,
     }
 }
