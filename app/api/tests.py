@@ -7,7 +7,6 @@ from .views import delete_all_records_except_last_ten
 class CurrencyViewTests(TestCase):
 
     def setUp(self):
-        # Создаем 15 записей в тестовой базе данных
         for i in range(15):
             CurrencyRate.objects.create(rate={'value': i})
 
